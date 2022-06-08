@@ -25,8 +25,8 @@ message(STATUS "\n\n========= Project Configuration ========\n")
 
 set(BUILD_SHARED_LIBS true)
 
-include(${PROJECT_SOURCE_DIR}/../cmake/DefaultCFlags.cmake)
-include(${PROJECT_SOURCE_DIR}/../cmake/SanitizersConfig.cmake)
+include(${PROJECT_SOURCE_DIR}/cmake/DefaultCFlags.cmake)
+include(${PROJECT_SOURCE_DIR}/cmake/SanitizersConfig.cmake)
 
 ament_python_install_package("maliput_object")
 
@@ -49,7 +49,7 @@ if(BUILD_TESTING)
   enable_testing()
   add_subdirectory(test)
   ament_flake8("--config" ${CMAKE_CURRENT_SOURCE_DIR}/.flake8)
-  ament_clang_format(CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/../.clang-format)
+  ament_clang_format(CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/.clang-format)
 endif()
 
 ##############################################################################
