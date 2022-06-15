@@ -78,9 +78,6 @@ PYBIND11_MODULE(api, m) {
       .def("__repr__", [](const api::Object<maliput::math::Vector3>::Id& id) { return id.string(); });
 
   py::class_<api::Object<maliput::math::Vector3>>(m, "Object")
-      .def(py::init<const api::Object<maliput::math::Vector3>::Id&, const std::map<std::string, std::string>&,
-                    std::unique_ptr<api::BoundingRegion<maliput::math::Vector3>>>(),
-           py::arg("id"), py::arg("properties"), py::arg("region"))
       .def("id", &api::Object<maliput::math::Vector3>::id)
       .def("bounding_region", &api::Object<maliput::math::Vector3>::bounding_region,
            py::return_value_policy::reference_internal)
