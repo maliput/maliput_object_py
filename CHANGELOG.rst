@@ -2,8 +2,8 @@
 Changelog for package maliput_object_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.0 (2022-06-21)
+------------------
 * Updates package.xml file.
 * Removes unnecessary dependencies.
 * Removes constructor where unique_ptr is being used.
