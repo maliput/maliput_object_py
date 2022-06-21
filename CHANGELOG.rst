@@ -2,8 +2,8 @@
 Changelog for package maliput_object_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.1 (2022-06-21)
+------------------
 * Fixes package's license path.
 * Contributors: Franco Cipollone
 
