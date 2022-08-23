@@ -27,12 +27,12 @@
 // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#include <maliput/math/bounding_region.h>
+#include <maliput/math/overlapping_type.h>
 #include <maliput/math/vector.h>
-#include <maliput_object/api/bounding_region.h>
 #include <maliput_object/api/object.h>
 #include <maliput_object/api/object_book.h>
 #include <maliput_object/api/object_query.h>
-#include <maliput_object/api/overlapping_type.h>
 #include <pybind11/operators.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
@@ -44,11 +44,11 @@ namespace bindings {
 namespace py = pybind11;
 
 PYBIND11_MODULE(api, m) {
-  py::class_<api::BoundingRegion<maliput::math::Vector3>>(m, "BoundingRegion")
-      .def("position", &api::BoundingRegion<maliput::math::Vector3>::position,
+  py::class_<maliput::math::BoundingRegion<maliput::math::Vector3>>(m, "BoundingRegion")
+      .def("position", &maliput::math::BoundingRegion<maliput::math::Vector3>::position,
            py::return_value_policy::reference_internal)
-      .def("Contains", &api::BoundingRegion<maliput::math::Vector3>::Contains, py::arg("position"))
-      .def("Overlaps", &api::BoundingRegion<maliput::math::Vector3>::Overlaps, py::arg("other"));
+      .def("Contains", &maliput::math::BoundingRegion<maliput::math::Vector3>::Contains, py::arg("position"))
+      .def("Overlaps", &maliput::math::BoundingRegion<maliput::math::Vector3>::Overlaps, py::arg("other"));
 
   py::class_<api::ObjectBook<maliput::math::Vector3>>(m, "ObjectBook")
       .def("objects", &api::ObjectBook<maliput::math::Vector3>::objects, py::return_value_policy::reference_internal)
@@ -63,7 +63,7 @@ PYBIND11_MODULE(api, m) {
                                                                          py::const_),
            py::arg("object"))
       .def("FindOverlappingLanesIn",
-           py::overload_cast<const api::Object<maliput::math::Vector3>*, const api::OverlappingType&>(
+           py::overload_cast<const api::Object<maliput::math::Vector3>*, const maliput::math::OverlappingType&>(
                &api::ObjectQuery::FindOverlappingLanesIn, py::const_),
            py::arg("object"), py::arg("overlapping_type"))
       .def("Route", &api::ObjectQuery::Route, py::arg("origin"), py::arg("target"))
@@ -86,12 +86,12 @@ PYBIND11_MODULE(api, m) {
            py::return_value_policy::reference_internal)
       .def("get_property", &api::Object<maliput::math::Vector3>::get_property, py::arg("key"));
 
-  py::enum_<api::OverlappingType>(m, "OverlappingType", py::arithmetic())
-      .value("kDisjointed", api::OverlappingType::kDisjointed)
-      .value("kIntersected", api::OverlappingType::kIntersected)
-      .value("kContained", api::OverlappingType::kContained)
-      .def("__and__", api::operator&)
-      .def("__or__", api::operator|);
+  py::enum_<maliput::math::OverlappingType>(m, "OverlappingType", py::arithmetic())
+      .value("kDisjointed", maliput::math::OverlappingType::kDisjointed)
+      .value("kIntersected", maliput::math::OverlappingType::kIntersected)
+      .value("kContained", maliput::math::OverlappingType::kContained)
+      .def("__and__", maliput::math::operator&)
+      .def("__or__", maliput::math::operator|);
 }
 }  // namespace bindings
 }  // namespace object
