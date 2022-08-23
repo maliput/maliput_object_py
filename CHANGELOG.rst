@@ -2,6 +2,13 @@
 Changelog for package maliput_object_py
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Pairs with BoundingRegion being moved to maliput. (`#8 <https://github.com/maliput/maliput_object_py/issues/8>`_)
+* Adds triage workflow. (`#6 <https://github.com/maliput/maliput_object_py/issues/6>`_)
+* Improves README. (`#5 <https://github.com/maliput/maliput_object_py/issues/5>`_)
+* Contributors: Franco Cipollone
+
 0.1.1 (2022-06-21)
 ------------------
 * Fixes package's license path.
